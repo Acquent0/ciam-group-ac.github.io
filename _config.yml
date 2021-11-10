@@ -215,7 +215,7 @@ font:
 # Social Links
 # Key is the link label showing to end users.
 # Value is the target link (E.g. GitHub: https://github.com/iissnan)
-#social:
+social:
   GitHub: https://github.com/Acquent0
   Blog: https://acquent0.github.io/ciam-group-ac.github.io
 
@@ -287,8 +287,8 @@ sidebar:
  links_title: Links
  links_layout: block
  links_layout: inline
- links:
-   HerloConnell's blog: https://HerloConnell.github.io
+ links: HerloConnell's blog: https://HerloConnell.github.io
+   
 
 
 # ---------------------------------------------------------------
@@ -447,11 +447,11 @@ gitalk:
   admin: # colingpt
 
 # Baidu Share
-# Available value:
-#    button | slide
+  Available value:
+     button | slide
 # Warning: Baidu Share does not support https.
- baidushare: true
-##  type: button
+  baidushare: true
+  type: button
 
 # Share
 # jiathis: true

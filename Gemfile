@@ -23,3 +23,5 @@ gem "jekyll-redirect-from", "~> 0.16.0"
 gem "jekyll-avatar", "~> 0.7.0"
 
 gem "jekyll-relative-links", "~> 0.6.1"
+
+gem "wdm", "~> 0.1.1"
