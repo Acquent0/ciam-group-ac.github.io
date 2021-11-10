@@ -1,5 +1,5 @@
 ---
-title: Windows环境下jekyll配置
+title: Pytorch Learning Notes
 date: 2021-11-10 15:47:18
 comments: true
 categories:
