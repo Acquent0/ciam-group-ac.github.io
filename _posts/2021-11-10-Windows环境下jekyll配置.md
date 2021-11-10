@@ -1,6 +1,7 @@
 ---
 title: Windows环境下jekyll配置
 date: 2021-11-10 15:47:18
+description: 
 comments: true
 categories:
 - env-set
@@ -18,13 +19,13 @@ tags:
 
 安装完毕用ruby -v检验安装
 
-![image-20211107234410099](https://github.com/Acquent0/ciam-group-ac.github.io/tree/master//assets/images/typroa-img/image-20211107234410099.png)
+![image-20211107234410099](https://i.loli.net/2021/11/10/7dUVu6WsCeGOHL8.png)
 
 ## 用Bundler安装Jekyll
 
 ### 基本步骤：
 
-![image-20211107234605818](https://github.com/Acquent0/ciam-group-ac.github.io/tree/master//assets/images/typroa-img/image-20211107234605818.png)
+![image-20211107234605818](https://i.loli.net/2021/11/10/Fk976TwmbxstufG.png)
 
 ### 关于你的网站仓库
 
@@ -40,7 +41,9 @@ tags:
 
 3. 进入步骤一得到的路径，用复制文件中的内容到github的setting中的SSH Key设置中，可以得到它发送设置成功的邮件。
 
-4. 在gitbash中输入ssh -T git@github.com, 如果得到如下表述，则设置成功。![image-20211108001641329](https://github.com/Acquent0/ciam-group-ac.github.io/tree/master//assets/images/typroa-img/image-20211108001641329.png)
+4. 在gitbash中输入ssh -T git@github.com, 如果得到如下表述，则设置成功。
+
+   ![image-20211108001641329](https://i.loli.net/2021/11/10/MwB3vfWiyYrslLX.png)
 
 #### 与仓库简历SSH连接
 
@@ -48,11 +51,11 @@ tags:
 
    其中name表示push时本地仓库使用的名称；addr表示建立好仓库后提示的地址，注意仓库建立不要勾选readme。
 
-   ![image-20211108002455835](https://github.com/Acquent0/ciam-group-ac.github.io/tree/master//assets/images/typroa-img/image-20211108002455835.png)
+   ![image-20211108002423754](https://i.loli.net/2021/11/10/6MCefjDG9tcgOXN.png)
 
 2. 用 git remote -v 检查是否连接成功
 
-   ![image-20211108002732907](https://github.com/Acquent0/ciam-group-ac.github.io/tree/master//assets/images/typroa-img/image-20211108002715659.png)
+   ![image-20211108002715659](https://i.loli.net/2021/11/10/HFMABTQS23h5Wtz.png)
 
 3. 如果以后不想再连接这个仓库，只需输入 git remote remove + name
 
@@ -60,19 +63,21 @@ tags:
 
 在对应仓库的Setting中的Options中找到GitHub Pages点击启用
 
-![image-20211110141213723](https://github.com/Acquent0/ciam-group-ac.github.io/tree/master//assets/images/typroa-img/image-20211110141213723.png)
+![image-20211110141213723](https://i.loli.net/2021/11/10/LYxD5sWqiOkC8UX.png)
 
 安装了jekyll-remote-theme插件就可以使用自己的主题了。
 
 最后在本地git push到远程仓库中便可以同步更新到自己的GitHub pages上，以网页的形式展现md文档。
 
+![image-20211110000822668](https://i.loli.net/2021/11/10/GZaVCJxReUNwntE.png)
+
 ## jekyll的使用
 
-![image-20211110142143855](https://github.com/Acquent0/ciam-group-ac.github.io/tree/master//assets/images/typroa-img/image-20211110142143855.png)
+![image-20211110142143855](https://i.loli.net/2021/11/10/9SyKZzjEL2UQwDC.png)
 
 其中笔记需要以yyyy-mm-dd-name.md格式来写，且需要写类似如下头标题：
 
-![image-20211110161714195](https://github.com/Acquent0/ciam-group-ac.github.io/tree/master//assets/images/typroa-img/image-20211110161714195.png)
+![image-20211110161714195](https://i.loli.net/2021/11/10/qWFLcvjC3gsZKt2.png)
 
 
 
@@ -82,19 +87,19 @@ tags:
 
 2. 进行步骤5时，可能遇到如下报错
 
-   ![image-20211109235616495](https://github.com/Acquent0/ciam-group-ac.github.io/tree/master//assets/images/typroa-img/image-20211109235616495.png)
+   ![image-20211109235616495](https://i.loli.net/2021/11/10/wjpW47aHMUEfoct.png)
 
    这是因为Ruby3.0以上不会再自带WebRick，需要手动添加到环境里，执行 bundle add webrick即可，另再执行gem install github-pages, 安装完毕后会出现这个界面：
 
-   ![image-20211110000420691](https://github.com/Acquent0/ciam-group-ac.github.io/tree/master//assets/images/typroa-img/image-20211110000420691.png)
+   ![image-20211110000420691](https://i.loli.net/2021/11/10/rZgUiHhRWIJ61fc.png)
 
    看到这个我突然感觉可能要成了！困扰了我一个晚上的各种bug貌似要被解决了！新的希望！
 
-   ![image-20211110000658587](https://github.com/Acquent0/ciam-group-ac.github.io/tree/master//assets/images/typroa-img/image-20211110000658587.png)
+   ![image-20211110000658587](https://i.loli.net/2021/11/10/gVkLx8IvpOGamuz.png)
 
    成了！
 
-   ![image-20211110000822668](https://github.com/Acquent0/ciam-group-ac.github.io/tree/master//assets/images/typroa-img/image-20211110000822668.png)
+   ![image-20211110000822668](https://i.loli.net/2021/11/10/GZaVCJxReUNwntE.png)
 
    现在就可以开始配置各种样式了！Duang！Nice！
 
