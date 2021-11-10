@@ -1,0 +1,237 @@
+I"3T<h1 id="随机森林">随机森林</h1>
+
+<h2 id="1定义">1定义</h2>
+
+<p>随机森林是一种由决策树构成的集成算法</p>
+
+<h3 id="11-四个概念">1.1 四个概念</h3>
+
+<ul>
+  <li>基本概念</li>
+  <li>4个构造步骤</li>
+  <li>4种方式对比测评</li>
+  <li>10个优缺点，4个应用方向</li>
+</ul>
+
+<h4 id="111基本概念">1.1.1基本概念</h4>
+
+<p>随机森林属于 集成学习 中的 Bagging（Bootstrap AGgregation 的简称） 方法</p>
+
+<p><img src="https://easy-ai.oss-cn-shanghai.aliyuncs.com/2019-08-21-weizhi.png" alt="随机森林属于集成学习中的Bagging方法" style="zoom: 33%;" /></p>
+
+<h4 id="112决策树">1.1.2决策树</h4>
+
+<p><img src="https://easy-ai.oss-cn-shanghai.aliyuncs.com/2019-08-21-decision-tree.png" alt="图解决策树" style="zoom:33%;" /></p>
+
+<p>决策树是一种逻辑简单的机器学习算法，它是一种树形结构，所以叫决策树</p>
+
+<p><strong>元素构成</strong></p>
+
+<ul>
+  <li>根节点：包含样本的全集</li>
+  <li>内部节点：对应特征属性测试</li>
+  <li>叶节点：代表决策的结果</li>
+</ul>
+
+<p>预测时，在树的内部节点处用某一属性值进行判断，根据判断结果决定进入哪个分支节点，直到到达叶节点处，得到分类结果。</p>
+
+<p>这是一种基于 if-then-else 规则的有监督学习算法，决策树的这些规则通过训练得到，而不是人工制定的。</p>
+
+<p>决策树是最简单的机器学习算法，它易于实现，可解释性强，完全符合人类的直观思维，有着广泛的应用。</p>
+
+<h4 id="113决策树优缺点">1.1.3决策树优缺点</h4>
+
+<p><strong>优点</strong></p>
+
+<ul>
+  <li>决策树易于理解和解释，可以可视化分析，容易提取出规则；</li>
+  <li>可以同时处理标称型和数值型数据；</li>
+  <li>比较适合处理有缺失属性的样本；</li>
+  <li>能够处理不相关的特征；</li>
+  <li>测试数据集时，运行速度比较快；</li>
+  <li>在相对短的时间内能够对大型数据源做出可行且效果良好的结果。</li>
+</ul>
+
+<p><strong>缺点</strong></p>
+
+<ul>
+  <li>容易发生过拟合（随机森林可以很大程度上减少过拟合）；</li>
+  <li>容易忽略数据集中属性的相互关联；</li>
+  <li>对于那些各类别样本数量不一致的数据，在决策树中，进行属性划分时，不同的判定准则会带来不同的属性选择倾向；信息增益准则对可取数目较多的属性有所偏好（典型代表ID3算法），而增益率准则（CART）则对可取数目较少的属性有所偏好，但CART进行属性划分时候不再简单地直接利用增益率尽心划分，而是采用一种启发式规则）（只要是使用了信息增益，都有这个缺点，如RF）。</li>
+  <li>ID3算法计算信息增益时结果偏向数值比较多的特征。</li>
+</ul>
+
+<h3 id="12构造步骤">1.2构造步骤</h3>
+
+<p><img src="https://easy-ai.oss-cn-shanghai.aliyuncs.com/2019-08-21-4steps.png" alt="构造随机森林的4个步骤" style="zoom:33%;" /></p>
+
+<ol>
+  <li>一个样本容量为N的样本，有放回的抽取N次，每次抽取1个，最终形成了N个样本。这选择好了的N个样本用来训练一个决策树，作为决策树根节点处的样本。</li>
+  <li>当每个样本有M个属性时，在决策树的每个节点需要分裂时，随机从这M个属性中选取出m个属性，满足条件m « M。然后从这m个属性中采用某种策略（比如说信息增益）来选择1个属性作为该节点的分裂属性。</li>
+  <li>决策树形成过程中每个节点都要按照步骤2来分裂（很容易理解，如果下一次该节点选出来的那一个属性是刚刚其父节点分裂时用过的属性，则该节点已经达到了叶子节点，无须继续分裂了）。一直到不能够再分裂为止。注意整个决策树形成过程中没有进行剪枝。</li>
+  <li>按照步骤1~3建立大量的决策树，这样就构成了随机森林了。</li>
+</ol>
+
+<h3 id="13优缺点">1.3优缺点</h3>
+
+<p><strong>优点</strong></p>
+
+<ol>
+  <li>它可以出来很高维度（特征很多）的数据，并且不用降维，无需做特征选择</li>
+  <li>它可以判断特征的重要程度</li>
+  <li>可以判断出不同特征之间的相互影响</li>
+  <li>不容易过拟合</li>
+  <li>训练速度比较快，容易做成并行方法</li>
+  <li>实现起来比较简单</li>
+  <li>对于不平衡的数据集来说，它可以平衡误差。</li>
+  <li>如果有很大一部分的特征遗失，仍可以维持准确度。</li>
+</ol>
+
+<p><strong>缺点</strong></p>
+
+<ol>
+  <li>随机森林已经被证明在某些噪音较大的分类或回归问题上会过拟合。</li>
+  <li>对于有不同取值的属性的数据，取值划分较多的属性会对随机森林产生更大的影响，所以随机森林在这种数据上产出的属性权值是不可信的</li>
+</ol>
+
+<h3 id="14应用对象">1.4应用对象</h3>
+
+<p><img src="https://easy-ai.oss-cn-shanghai.aliyuncs.com/2019-08-21-application.png" alt="随机森林的 4 个应用方向" style="zoom:33%;" /></p>
+
+<h3 id="15code">1.5Code</h3>
+
+<h4 id="151-nni调优">1.5.1 nni调优</h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#---------------------------------nni--------------------------------------
+</span><span class="n">LOG</span> <span class="o">=</span> <span class="n">logging</span><span class="p">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s">'test_LSTM'</span><span class="p">)</span>
+
+<span class="c1">#TENSORBOARD_DIR = os.environ['NNI_OUTPUT_DIR']
+</span>
+<span class="k">class</span> <span class="nc">Logger</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span><span class="c1"># 日志类
+</span>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_name</span><span class="o">=</span><span class="s">"Default.log"</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="n">sys</span><span class="p">.</span><span class="n">stdout</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">terminal</span> <span class="o">=</span> <span class="n">stream</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">log</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="s">"a"</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">terminal</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">log</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">flush</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+    
+<span class="c1">#nni中返回中间值调用，在api和sequential类型的模型中可以调用，大多数分类器没有相关argument
+</span><span class="k">class</span> <span class="nc">SendMetrics</span><span class="p">(</span><span class="n">keras</span><span class="p">.</span><span class="n">callbacks</span><span class="p">.</span><span class="n">Callback</span><span class="p">):</span> 
+    
+    <span class="s">'''
+    Keras callback to send metrics to NNI framework
+    '''</span>
+    <span class="k">def</span> <span class="nf">on_epoch_end</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">epoch</span><span class="p">,</span> <span class="n">logs</span><span class="o">=</span><span class="p">{}):</span>
+        <span class="s">'''
+        Run on end of each epoch
+        '''</span>
+        <span class="n">logging</span><span class="p">.</span><span class="n">debug</span><span class="p">(</span><span class="n">logs</span><span class="p">)</span>
+        <span class="n">nni</span><span class="p">.</span><span class="n">report_intermediate_result</span><span class="p">(</span><span class="n">logs</span><span class="p">[</span><span class="s">"val_acc"</span><span class="p">])</span>
+
+        
+
+<span class="k">try</span><span class="p">:</span> 
+    <span class="n">tuner_params</span> <span class="o">=</span> <span class="n">nni</span><span class="p">.</span><span class="n">get_next_parameter</span><span class="p">()</span>
+    <span class="n">LOG</span><span class="p">.</span><span class="n">debug</span><span class="p">(</span><span class="n">tuner_params</span><span class="p">)</span>
+
+    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s">'n_estimators'</span><span class="p">:</span> <span class="mi">11</span><span class="p">,</span>
+        <span class="s">'min_samples_leaf'</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s">'min_samples_split'</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s">'max_features'</span><span class="p">:</span> <span class="mi">11</span> 
+    <span class="p">}</span>
+
+    <span class="n">params</span><span class="p">.</span><span class="n">update</span><span class="p">(</span><span class="n">tuner_params</span><span class="p">)</span>
+    <span class="c1"># 实验参数设置
+</span>    <span class="n">min_samples_leaf</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s">'min_samples_leaf'</span><span class="p">]</span> <span class="c1"># 不必要超过8及以上
+</span>    <span class="n">min_samples_split</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s">'min_samples_split'</span><span class="p">]</span> <span class="c1"># 不必要超过8及以上
+</span>    <span class="n">max_features</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s">'max_features'</span><span class="p">]</span> <span class="c1"># 50往上的效果可能较好
+</span>    <span class="n">n_estimators</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s">'n_estimators'</span><span class="p">]</span> <span class="c1"># 有待商榷，40、28、8可以出效果比较好的结果
+</span>    <span class="c1">#------------------------------------nni----------------------------------------
+</span>    <span class="c1"># ps：以上调参针对50000*70*4的特征集和16分类的标签
+</span></code></pre></div></div>
+
+<h4 id="152-代码实现">1.5.2 代码实现</h4>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">RandomTree</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">,</span> <span class="n">Y_test</span><span class="p">):</span>
+        <span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span> <span class="c1"># 引入随机森林包
+</span>        <span class="n">model</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="n">n_estimators</span><span class="p">,</span> <span class="n">min_samples_leaf</span><span class="o">=</span><span class="n">min_samples_leaf</span><span class="p">,</span> <span class="n">min_samples_split</span><span class="o">=</span><span class="n">min_samples_split</span><span class="p">,</span> <span class="n">max_features</span><span class="o">=</span><span class="n">max_features</span><span class="p">)</span><span class="c1"># 调整参数
+</span>        <span class="c1"># # ------------------------fit network--------------------------------
+</span>        <span class="n">X_train</span> <span class="o">=</span> <span class="n">ma</span><span class="p">.</span><span class="n">masked_values</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">)</span>
+        <span class="c1"># Y_train = ma.masked_values(Y_train, -10)
+</span>        <span class="n">X_test</span> <span class="o">=</span> <span class="n">ma</span><span class="p">.</span><span class="n">masked_values</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">)</span>
+        <span class="c1"># Y_test = ma.masked_values(Y_test, -10)
+</span>        <span class="c1">#early_stopping = EarlyStopping( monitor='val_acc', min_delta=0.025, patience=25, verbose=1, mode='max')
+</span>        <span class="n">X_train</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="p">(</span><span class="n">X_train</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">X_train</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">X_train</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span>
+        <span class="n">X_test</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">X_test</span><span class="p">,(</span><span class="n">X_test</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">X_test</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">X_test</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span>      
+        <span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">)</span>
+        <span class="c1"># # ------------------------fit network-------------------------------- 
+</span>        <span class="c1"># # -------------------------evaluate--------------------------------
+</span>        <span class="n">score</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">mean</span><span class="p">(</span><span class="n">cross_val_score</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="n">X_test</span><span class="p">,</span><span class="n">Y_test</span><span class="p">))</span>
+        <span class="n">pred</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+        
+        <span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">Y_test</span><span class="p">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">pred</span><span class="p">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+        <span class="n">cm</span> <span class="o">=</span> <span class="n">cm</span><span class="p">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="p">.</span><span class="nb">float</span><span class="p">)</span>
+        <span class="n">u</span> <span class="o">=</span> <span class="n">plot_confusion_matrix</span><span class="p">(</span><span class="n">cm</span><span class="p">,</span> <span class="s">'ABCDEFGHIJKLMNOP'</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s">'confusion matrix'</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">score</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">history</span>
+        <span class="c1">## nni报告最终值
+</span>        <span class="n">LOG</span><span class="p">.</span><span class="n">debug</span><span class="p">(</span><span class="s">'score: %s'</span> <span class="o">%</span> <span class="n">score</span><span class="p">)</span>
+        <span class="n">nni</span><span class="p">.</span><span class="n">report_final_result</span><span class="p">(</span><span class="n">score</span><span class="p">)</span>
+
+<span class="k">except</span> <span class="nb">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="n">LOG</span><span class="p">.</span><span class="n">exception</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+    <span class="k">raise</span>
+</code></pre></div></div>
+
+<h3 id="16参数解释">1.6参数解释</h3>
+
+<h4 id="n_estimators"><strong>n_estimators:</strong></h4>
+
+<p>对原始数据集进行有放回抽样生成的子数据集个数，即决策树的个数。若n_estimators太小容易欠拟合，太大不能显著的提升模型，所以n_estimators选择适中的数值，版本0.20的默认值是10,版本0.22的默认值是100。</p>
+
+<h4 id="bootstrap"><strong>bootstrap:</strong></h4>
+
+<p>是否对样本集进行有放回抽样来构建树，True表示是,默认值True。</p>
+
+<h4 id="oob_score">oob_score:</h4>
+
+<p>是否采用袋外样本来评估模型的好坏，True代表是，默认值False,袋外样本误差是测试数据集误差的无偏估计，所以推荐设置True。</p>
+
+<p><u>RF框架的参数很少，框架参数择优一般是调节n_estimators值，即决策树个数。</u></p>
+
+<h4 id="max_features"><strong>max_features:</strong></h4>
+
+<p>构建决策树最优模型时考虑的最大特征数。默认是”auto”，表示最大特征数是N的平方根;“log2”表示最大特征数是 <img src="https://www.zhihu.com/equation?tex=log_%7B2%7DN" alt="[公式]" /> ;”sqrt”表示最大特征数是 <img src="https://www.zhihu.com/equation?tex=%5Csqrt%7BN%7D" alt="[公式]" /> 。如果是整数，代表考虑的最大特征数；如果是浮点数，表示对(N * max_features)取整。其中N表示样本的特征数。</p>
+
+<h4 id="max_depth"><strong>max_depth:</strong></h4>
+
+<p>决策树最大深度。若等于None,表示决策树在构建最优模型的时候不会限制子树的深度。如果模型样本量多，特征也多的情况下，推荐限制最大深度；若样本量少或者特征少，则不限制最大深度。</p>
+
+<h4 id="min_samples_leaf"><strong>min_samples_leaf:</strong></h4>
+
+<p>叶子节点含有的最少样本。若叶子节点样本数小于min_samples_leaf，则对该叶子节点和兄弟叶子节点进行剪枝，只留下该叶子节点的父节点。整数型表示个数，浮点型表示取大于等于（样本数 * min_samples_leaf)的最小整数。min_samples_leaf默认值是1。</p>
+
+<h4 id="min_samples_split"><strong>min_samples_split:</strong></h4>
+
+<p>节点可分的最小样本数，默认值是2。整数型和浮点型的含义与min_samples_leaf类似。</p>
+
+<h4 id="max_leaf_nodes"><strong>max_leaf_nodes:</strong></h4>
+
+<p>最大叶子节点数。int设置节点数,None表示对叶子节点数没有限制。</p>
+
+<h4 id="min_impurity_decrease"><strong>min_impurity_decrease:</strong></h4>
+
+<p>节点划分的最小不纯度。假设不纯度用信息增益表示，若某节点划分时的信息增益大于等于min_impurity_decrease，那么该节点还可以再划分；反之，则不能划分。</p>
+
+<h4 id="criterion"><strong>criterion:</strong></h4>
+
+<p>表示节点的划分标准。不纯度标准参考Gini指数，信息增益标准参考”entrop”熵。</p>
+
+<h4 id="min_samples_leaf-1"><strong>min_samples_leaf:</strong></h4>
+
+<p>叶子节点最小的样本权重和。叶子节点如果小于这个值，则会和兄弟节点一起被剪枝，只保留叶子节点的父节点。默认是0，则不考虑样本权重问题。一般来说，如果有较多样本的缺失值或偏差很大，则尝试设置该参数值。</p>
+:ET

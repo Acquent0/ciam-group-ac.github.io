@@ -1,0 +1,91 @@
+I"�<h1 id="1cnn">1.CNN</h1>
+
+<h3 id="11边缘检测">1.1边缘检测</h3>
+
+<h4 id="111卷积互相关">1.1.1卷积（互相关）</h4>
+
+<p>符号：*</p>
+
+<h4 id="112padding">1.1.2Padding</h4>
+
+<p>因为对图像卷积的结果可能会使图像缩小，因此可以采用padding填充图像的边缘一圈为0(也可以填充多层)</p>
+
+<p><img src="C:\Users\Dell\AppData\Roaming\Typora\typora-user-images\image-20210803103201631.png" alt="image-20210803103201631" /></p>
+
+<p>n为图像维数，f为filter维数，p为padding维数。</p>
+
+<p><strong>PS：</strong>f is ususlly odd，从而使得图像能有一个中心点，这在计算机视觉中有着重要的应用</p>
+
+<h4 id="113运算">1.1.3运算</h4>
+
+<p>将filter的每个值和蓝色方块里对应的值相乘再相加，并将结果填到中心元素的对应位置</p>
+
+<p><img src="C:\Users\Dell\AppData\Roaming\Typora\typora-user-images\image-20210803101222078.png" alt="image-20210803101222078" /></p>
+
+<p>​                            如图所示为垂直边缘元检测器</p>
+
+<p><img src="C:\Users\Dell\AppData\Roaming\Typora\typora-user-images\image-20210803102000681.png" alt="image-20210803102000681" /></p>
+
+<p>​								为什么可以检测垂直边缘</p>
+
+<p>如图所示的filter，用它得到的结果就更倾向于中间图片<strong>左侧更加明亮而右侧更加晦暗</strong>，中间的0则<strong>扩大</strong>了亮暗之间的距离。而从左到右的1~-1也表示了图像的<strong>亮暗变化</strong></p>
+
+<h4 id="114卷积步长">1.1.4卷积步长</h4>
+
+<p><img src="C:\Users\Dell\AppData\Roaming\Typora\typora-user-images\image-20210803103637167.png" alt="image-20210803103637167" /></p>
+
+<p>如果得到的商不为整数，应向下取整</p>
+
+<p><img src="C:\Users\Dell\AppData\Roaming\Typora\typora-user-images\image-20210803103740837.png" alt="image-20210803103740837" /></p>
+
+<p>s表示步长</p>
+
+<h4 id="115其他过滤器">1.1.5其他过滤器</h4>
+
+<p><img src="C:\Users\Dell\AppData\Roaming\Typora\typora-user-images\image-20210803102644422.png" alt="image-20210803102644422" /></p>
+
+<p>使用合适的过滤器可以检测到不同角度的边缘</p>
+
+<h3 id="12三维卷积">1.2三维卷积</h3>
+
+<h4 id="121-convolutions-on-rbg-images">1.2.1 Convolutions on RBG images</h4>
+
+<p>过滤器层数和图像层数必须相同</p>
+
+<p><img src="C:\Users\Dell\AppData\Roaming\Typora\typora-user-images\image-20210803104410481.png" alt="image-20210803104410481" /></p>
+
+<h4 id="122同时检测多个边缘">1.2.2同时检测多个边缘</h4>
+
+<p>对三维图像使用多个filter，一个检测垂直边缘，一个检测水平边缘，再将结果堆叠到一起</p>
+
+<p><img src="C:\Users\Dell\AppData\Roaming\Typora\typora-user-images\image-20210803104732336.png" alt="image-20210803104732336" /></p>
+
+<h3 id="13单层卷积网络">1.3单层卷积网络</h3>
+
+<h4 id="131-example-of-a-layer">1.3.1 Example of a layer</h4>
+
+<p><img src="C:\Users\Dell\AppData\Roaming\Typora\typora-user-images\image-20210803105301828.png" alt="image-20210803105301828" /></p>
+
+<h4 id="132-summary">1.3.2 Summary</h4>
+
+<p>如果在一个神经网络中有10个filters，每个都是3*3*3，则最终这层会有多少参数？</p>
+
+<p>一共10*(27+1)个，其中的1表示bias，即偏差</p>
+
+<p><img src="C:\Users\Dell\AppData\Roaming\Typora\typora-user-images\image-20210803110224879.png" alt="image-20210803110224879" /></p>
+
+<h3 id="14池化层pooling">1.4池化层（Pooling）</h3>
+
+<h4 id="141-max-pooling">1.4.1 Max Pooling</h4>
+
+<p><img src="C:\Users\Dell\AppData\Roaming\Typora\typora-user-images\image-20210803110958496.png" alt="image-20210803110958496" /></p>
+
+<p>作用：如果在过滤器中提取到某个特征，那么保留其最大值.</p>
+
+<p>参数：pooling_size, stride</p>
+
+<h3 id="15示例">1.5示例</h3>
+
+<p><img src="C:\Users\Dell\AppData\Roaming\Typora\typora-user-images\image-20210803112737615.png" alt="image-20210803112737615" /></p>
+
+:ET
