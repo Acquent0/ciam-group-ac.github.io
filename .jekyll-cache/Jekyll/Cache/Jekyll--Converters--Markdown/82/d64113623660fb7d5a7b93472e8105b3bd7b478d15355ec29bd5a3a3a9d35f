@@ -1,0 +1,21 @@
+I"�<h1 id="pytorch-learning-notes">Pytorch Learning Notes</h1>
+
+<h2 id="numpy">Numpy</h2>
+
+<p><strong>概念：</strong>因Pythorch和Tensorflow斗鱼Numpy数组有类似的计算逻辑；并且它还被广泛用于Pandas，SciPy等Py模块中。并且人脸识别技术本质上也是先将图片转换成NumPy数组</p>
+
+<h2 id="numpy数组">NumPy数组</h2>
+
+<p><strong>特点：</strong></p>
+
+<ul>
+  <li>NumPy(后简称NP)数组长度不能动态改变，只能通过创建新的数组来更改。</li>
+  <li>NP数组的数据类型必须一致。</li>
+  <li>NP数组的运算经过优化，速度特别快，且相对于Py中的列表同等操作使用的内存更少。</li>
+</ul>
+
+<p><strong>创建数组：</strong></p>
+
+<p><strong>数组属性：</strong></p>
+
+:ET

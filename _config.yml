@@ -598,6 +598,7 @@ local_search:
 # Alias: {% extlink text url "title" %}
 exturl: false
 
+future: true
 
 #! ---------------------------------------------------------------
 #! DO NOT EDIT THE FOLLOWING SETTINGS
