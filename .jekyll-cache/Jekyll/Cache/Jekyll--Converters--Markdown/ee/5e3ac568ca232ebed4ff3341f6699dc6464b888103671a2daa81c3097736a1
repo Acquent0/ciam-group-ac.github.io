@@ -1,5 +1,0 @@
-I"><p>One of the rewards of switching my website to <a href="http://jekyllrb.com/">Jekyll</a> is the
-ability to support <strong>MathJax</strong>, which means I can write LaTeX-like equations that get
-nicely displayed in a web browser, like this one \( \sqrt{\frac{n!}{k!(n-k)!}} \) or
-this one \( x^2 + y^2 = r^2 \).</p>
-:ET
