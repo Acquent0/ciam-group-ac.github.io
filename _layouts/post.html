@@ -1,7 +1,6 @@
 ---
-theme :
-  name : bootstrap-3
-layout: default
+layout: layout
 ---
-{% include JB/setup %}
-{% include themes/bootstrap-3/post.html %}
+
+{% assign __ = site.data.languages[site.language] %}
+{% include post.html %}

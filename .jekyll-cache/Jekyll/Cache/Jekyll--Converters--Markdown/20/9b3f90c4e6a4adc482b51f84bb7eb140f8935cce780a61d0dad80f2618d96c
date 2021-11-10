@@ -1,0 +1,90 @@
+I"(#<p>One of the rewards of switching my website to <a href="http://jekyllrb.com/">Jekyll</a> is the
+ability to support <strong>MathJax</strong>, which means I can write LaTeX-like equations that get
+nicely displayed in a web browser, like this one \( \sqrt{\frac{n!}{k!(n-k)!}} \) or
+this one \( x^2 + y^2 = r^2 \).</p>
+
+<!--more-->
+
+<p><img class="centered" src="https://www.mathjax.org/badge/mj-logo.svg" /></p>
+
+<h3 id="whats-mathjax">What’s MathJax?</h3>
+
+<p>If you check MathJax website <a href="http://www.mathjax.org/">(www.mathjax.org)</a> you’ll see
+that it <em>is an open source JavaScript display engine for mathematics that works in all
+browsers</em>.</p>
+
+<h3 id="how-to-implement-mathjax-with-jekyll">How to implement MathJax with Jekyll</h3>
+
+<p>I followed the instructions described by Dason Kurkiewicz for
+<a href="http://dasonk.github.io/blog/2012/10/09/Using-Jekyll-and-Mathjax/">using Jekyll and Mathjax</a>.</p>
+
+<p>Here are some important details. I had to modify the Ruby library for Markdown in
+my <code class="language-plaintext highlighter-rouge">_config.yml</code> file. Now I’m using redcarpet so the corresponding line in the
+configuration file is: <code class="language-plaintext highlighter-rouge">markdown: redcarpet</code></p>
+
+<p>To load the MathJax javascript, I added the following lines in my layout <code class="language-plaintext highlighter-rouge">post.html</code>
+(located in my folder <code class="language-plaintext highlighter-rouge">_layouts</code>)</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="o">&lt;</span><span class="n">script</span><span class="w"> </span><span class="n">type</span><span class="o">=</span><span class="s2">"text/javascript"</span><span class="w">
+    </span><span class="n">src</span><span class="o">=</span><span class="s2">"http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"</span><span class="o">&gt;</span><span class="w">
+</span><span class="o">&lt;/</span><span class="n">script</span><span class="o">&gt;</span></code></pre></figure>
+
+<p>Of course you can choose a different file location in your jekyll layouts.</p>
+
+<p>Note that by default, the <strong>tex2jax</strong> preprocessor defines the
+LaTeX math delimiters, which are <code class="language-plaintext highlighter-rouge">\\(...\\)</code> for in-line math, and <code class="language-plaintext highlighter-rouge">\\[...\\]</code> for
+displayed equations. It also defines the TeX delimiters <code class="language-plaintext highlighter-rouge">$$...$$</code> for displayed
+equations, but it does not define <code class="language-plaintext highlighter-rouge">$...$</code> as in-line math delimiters. To enable in-line math delimiter with <code class="language-plaintext highlighter-rouge">$...$</code>, please use the following configuration:</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="o">&lt;</span><span class="n">script</span><span class="w"> </span><span class="n">type</span><span class="o">=</span><span class="s2">"text/x-mathjax-config"</span><span class="o">&gt;</span><span class="w">
+</span><span class="n">MathJax.Hub.Config</span><span class="p">({</span><span class="w">
+  </span><span class="n">tex2jax</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">inlineMath</span><span class="o">:</span><span class="w"> </span><span class="p">[[</span><span class="s1">'$'</span><span class="p">,</span><span class="s1">'$'</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="s1">'\\('</span><span class="p">,</span><span class="s1">'\\)'</span><span class="p">]],</span><span class="w">
+    </span><span class="n">processEscapes</span><span class="o">:</span><span class="w"> </span><span class="n">true</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">});</span><span class="w">
+</span><span class="o">&lt;/</span><span class="n">script</span><span class="o">&gt;</span><span class="w">
+</span><span class="o">&lt;</span><span class="n">script</span><span class="w"> </span><span class="n">src</span><span class="o">=</span><span class="s2">"https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"</span><span class="w"> </span><span class="n">type</span><span class="o">=</span><span class="s2">"text/javascript"</span><span class="o">&gt;&lt;/</span><span class="n">script</span><span class="o">&gt;</span></code></pre></figure>
+
+<h3 id="a-couple-of-examples">A Couple of Examples</h3>
+
+<p>Here’s a short list of examples. To know more about the details behind MathJax, you can
+always checked the provided documentation available at
+<a href="http://docs.mathjax.org/en/latest/">http://docs.mathjax.org/en/latest/</a></p>
+
+<p>Let’s try a first example. Here’s a dummy equation:</p>
+
+\[a^2 + b^2 = c^2\]
+
+<p>How do you write such expression? Very simple: using <strong>double dollar</strong> signs</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="o">$$</span><span class="n">a</span><span class="o">^</span><span class="m">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="o">^</span><span class="m">2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">c</span><span class="o">^</span><span class="m">2</span><span class="o">$$</span></code></pre></figure>
+
+<p>To display inline math use <code class="language-plaintext highlighter-rouge">\\( ... \\)</code> like this <code class="language-plaintext highlighter-rouge">\\( sin(x^2) \\)</code> which gets
+rendered as \( sin(x^2) \)</p>
+
+<p>Here’s another example using type <code class="language-plaintext highlighter-rouge">\mathsf</code></p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="o">$$</span><span class="w"> </span><span class="err">\</span><span class="n">mathsf</span><span class="p">{</span><span class="n">Data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PCs</span><span class="p">}</span><span class="w"> </span><span class="err">\</span><span class="n">times</span><span class="w"> </span><span class="err">\</span><span class="n">mathsf</span><span class="p">{</span><span class="n">Loadings</span><span class="p">}</span><span class="w"> </span><span class="o">$$</span></code></pre></figure>
+
+<p>which gets displayed as</p>
+
+\[\mathsf{Data = PCs} \times \mathsf{Loadings}\]
+
+<p>Or even better:</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="err">\\</span><span class="p">[</span><span class="w"> </span><span class="err">\</span><span class="n">mathbf</span><span class="p">{</span><span class="n">X</span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">\</span><span class="n">mathbf</span><span class="p">{</span><span class="n">Z</span><span class="p">}</span><span class="w"> </span><span class="err">\</span><span class="n">mathbf</span><span class="p">{</span><span class="n">P</span><span class="o">^</span><span class="err">\</span><span class="n">mathsf</span><span class="p">{</span><span class="nb">T</span><span class="p">}}</span><span class="w"> </span><span class="err">\\</span><span class="p">]</span></code></pre></figure>
+
+<p>is displayed as</p>
+
+<p>\[ \mathbf{X} = \mathbf{Z} \mathbf{P^\mathsf{T}} \]</p>
+
+<p>If you want to use subscripts like this \( \mathbf{X}_{n,p} \) you need to scape the
+underscores with a backslash like so <code class="language-plaintext highlighter-rouge">\mathbf{X}\_{n,p}</code>:</p>
+
+<figure class="highlight"><pre><code class="language-r" data-lang="r"><span class="o">$$</span><span class="w"> </span><span class="err">\</span><span class="n">mathbf</span><span class="p">{</span><span class="n">X</span><span class="p">}</span><span class="err">\_</span><span class="p">{</span><span class="n">n</span><span class="p">,</span><span class="n">p</span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="err">\</span><span class="n">mathbf</span><span class="p">{</span><span class="n">A</span><span class="p">}</span><span class="err">\_</span><span class="p">{</span><span class="n">n</span><span class="p">,</span><span class="n">k</span><span class="p">}</span><span class="w"> </span><span class="err">\</span><span class="n">mathbf</span><span class="p">{</span><span class="n">B</span><span class="p">}</span><span class="err">\_</span><span class="p">{</span><span class="n">k</span><span class="p">,</span><span class="n">p</span><span class="p">}</span><span class="w"> </span><span class="o">$$</span></code></pre></figure>
+
+<p>will be displayed as</p>
+
+<p>\[ \mathbf{X}_{n,p} = \mathbf{A}_{n,k} \mathbf{B}_{k,p} \]</p>
+:ET
