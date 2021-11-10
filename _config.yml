@@ -6,7 +6,7 @@
 # Site
 title: My Stario
 subtitle:
-description:
+description: Lunar is dancing with Venus, so my dream won't die.
 author: Acquent0
 # Support language: de, en, fr-FR, id, ja, ko, pt-BR, pt, ru, zh-Hans, zh-hk, zh-tw
 language: en
@@ -119,7 +119,8 @@ index_with_subtitle: false
 menu:
   home: /
   #categories: /categories/
-  #about: /about/
+  about: /about/
+  search: /search/
   archives: /archives/
   tags: /tags/
   #sitemap: /sitemap.xml
@@ -136,6 +137,7 @@ menu_icons:
   #KeyMapsToMenuItemKey: NameOfTheIconFromFontAwesome
   home: home
   about: user
+  search: searchengin
   categories: th
   schedule: calendar
   tags: tags
@@ -214,8 +216,8 @@ font:
 # Key is the link label showing to end users.
 # Value is the target link (E.g. GitHub: https://github.com/iissnan)
 #social:
-  #LinkLabel: Link
-
+  GitHub: https://github.com/Acquent0
+  Blog: https://acquent0.github.io/ciam-group-ac.github.io
 
 # Social Links Icons
 # Icon Mapping:
@@ -227,12 +229,13 @@ social_icons:
   # Icon Mappings.
   # KeyMapsToSocialItemKey: NameOfTheIconFromFontAwesome
   GitHub: github
+  Blog: blog
   Twitter: twitter
   Weibo: weibo
 
 
 # Sidebar Avatar
-# in directory: /assets/images/avatar.gif
+  in directory: /assets/images/avatar.png
 #avatar:
 
 
@@ -281,11 +284,11 @@ sidebar:
 
 
 # Blog rolls
-#links_title: Links
-#links_layout: block
-#links_layout: inline
-#links:
-  #Title: http://example.com/
+ links_title: Links
+ links_layout: block
+ links_layout: inline
+ links:
+   HerloConnell's blog: https://HerloConnell.github.io
 
 
 # ---------------------------------------------------------------
@@ -353,7 +356,7 @@ custom_logo:
 # Available value:
 #    normal | night | night eighties | night blue | night bright
 # https://github.com/chriskempson/tomorrow-theme
-highlight_theme: normal
+highlight_theme: night
 
 
 # ---------------------------------------------------------------
@@ -373,15 +376,16 @@ han: false
 #swiftype_key:
 
 # Baidu Analytics ID
-#baidu_analytics:
+  baidu_analytics: fbe42ba0dddf8136391f72731a7e98db
+
 
 # Duoshuo ShortName
 #duoshuo_shortname:
 
 # Disqus
 disqus:
-  enable: false
-  shortname:
+  enable: true
+  shortname: Acer
   count: true
   # hide comments (visitors need to click to load the comments)
   # count need to be false when hide is true
@@ -446,11 +450,11 @@ gitalk:
 # Available value:
 #    button | slide
 # Warning: Baidu Share does not support https.
-#baidushare:
+ baidushare: true
 ##  type: button
 
 # Share
-#jiathis:
+# jiathis: true
 # Warning: JiaThis does not support https.
 #add_this_id:
 
@@ -585,8 +589,8 @@ algolia_search:
 
 
 # Local search
-local_search:
-  enable: false
+  local_search:
+  enable: true
   # if auto, trigger search by changing input
   # if manual, trigger search by pressing enter key or search button
   trigger: auto
@@ -597,6 +601,11 @@ local_search:
 # Usage: {% exturl text url "title" %}
 # Alias: {% extlink text url "title" %}
 exturl: false
+
+# Reward_comment_Function
+reward_comment: If what I'm doing really helped you, will you offer me a cup of coffee?
+wechatpay: /images/wechatpay.png
+alipay: /images/alipaytpay.png
 
 
 #! ---------------------------------------------------------------
