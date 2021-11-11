@@ -15,7 +15,8 @@ date_format: '%Y-%m-%d'
 #Friend Links
 links_title: Links
 links:
-  HerloConnell: http://macshuo.com/
+  HerloConnell: http://HerloConnell.github.io/
+
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com' and baseurl as '/child'
