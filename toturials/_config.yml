@@ -12,6 +12,11 @@ author: Acquent0
 language: en
 date_format: '%Y-%m-%d'
 
+#Friend Links
+links_title: Links
+links:
+  HerloConnell: http://macshuo.com/
+
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com' and baseurl as '/child'
 url:
@@ -229,7 +234,7 @@ social_icons:
   # Icon Mappings.
   # KeyMapsToSocialItemKey: NameOfTheIconFromFontAwesome
   GitHub: github
-  Blog: microblog
+  Blog: pied-piper
   Twitter: twitter
   Weibo: weibo
 
