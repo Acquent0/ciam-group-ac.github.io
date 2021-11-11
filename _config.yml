@@ -19,8 +19,8 @@ links:
 
 # Donate 文章末尾显示打赏按钮
 reward_comment: If it really helped you, will you offer me a cup of coffee?
-wechatpay: /assets/images/wechatpay.jpg
-alipay: /assets/images/alipay.jpg
+wechatpay: /images/wechatpay.gif
+alipay: /images/alipay.gif
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com' and baseurl as '/child'
