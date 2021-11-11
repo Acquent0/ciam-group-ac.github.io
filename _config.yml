@@ -13,10 +13,14 @@ language: en
 date_format: '%Y-%m-%d'
 
 #Friend Links
-links_title: Links
+links_title: Friends' Links
 links:
   HerloConnell: http://HerloConnell.github.io/
 
+# Donate 文章末尾显示打赏按钮
+reward_comment: If it really helped you, will you offer me a cup of coffee?
+wechatpay: /images/wechatpay.jpg
+alipay: /images/alipay.jpg
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com' and baseurl as '/child'
