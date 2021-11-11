@@ -228,12 +228,13 @@ social_icons:
   # Icon Mappings.
   # KeyMapsToSocialItemKey: NameOfTheIconFromFontAwesome
   GitHub: github
+  Blog: blog
   Twitter: twitter
   Weibo: weibo
 
 
 # Sidebar Avatar
-# in directory: /assets/images/avatar.gif
+  in directory: /assets/images/avatar.png
 #avatar:
 
 
