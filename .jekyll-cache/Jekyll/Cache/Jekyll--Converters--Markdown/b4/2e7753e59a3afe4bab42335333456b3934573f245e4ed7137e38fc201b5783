@@ -1,0 +1,141 @@
+I"V<h1 id="windows环境下jekyll配置">Windows环境下jekyll配置</h1>
+
+<h2 id="ruby环境安装">ruby环境安装</h2>
+
+<p>安装链接：<a href="https://rubyinstaller.org/downloads/">点击这里安装对应版本的ruby+Devkit</a></p>
+
+<p>安装完毕用ruby -v检验安装</p>
+
+<p><img src="https://i.loli.net/2021/11/10/7dUVu6WsCeGOHL8.png" alt="image-20211107234410099" /></p>
+
+<h2 id="用bundler安装jekyll">用Bundler安装Jekyll</h2>
+
+<h3 id="基本步骤">基本步骤：</h3>
+
+<p><img src="https://i.loli.net/2021/11/10/Fk976TwmbxstufG.png" alt="image-20211107234605818" /></p>
+
+<h3 id="关于你的网站仓库">关于你的网站仓库</h3>
+
+<p>需要首先使用gitbash连接到你在github新建的仓库中，而连接可以通过两种方式：直接复制网址url；用SSH Key.</p>
+
+<h4 id="配置ssh-key">配置SSH Key：</h4>
+
+<ol>
+  <li>
+    <p>用~/.ssh检查电脑是否有.ssh文件夹：</p>
+
+    <p>如果没有则需要重新创建，具体可以参考reference文章</p>
+  </li>
+  <li>
+    <p>添加SSH Key到github</p>
+  </li>
+  <li>
+    <p>进入步骤一得到的路径，用复制文件中的内容到github的setting中的SSH Key设置中，可以得到它发送设置成功的邮件。</p>
+  </li>
+  <li>
+    <p>在gitbash中输入ssh -T git@github.com, 如果得到如下表述，则设置成功。</p>
+
+    <p><img src="https://i.loli.net/2021/11/10/MwB3vfWiyYrslLX.png" alt="image-20211108001641329" /></p>
+  </li>
+</ol>
+
+<h4 id="与仓库简历ssh连接">与仓库简历SSH连接</h4>
+
+<ol>
+  <li>
+    <p>在对应路径输入git remote add + name + addr</p>
+
+    <p>其中name表示push时本地仓库使用的名称；addr表示建立好仓库后提示的地址，注意仓库建立不要勾选readme。</p>
+
+    <p><img src="https://i.loli.net/2021/11/10/6MCefjDG9tcgOXN.png" alt="image-20211108002423754" /></p>
+  </li>
+  <li>
+    <p>用 git remote -v 检查是否连接成功</p>
+
+    <p><img src="https://i.loli.net/2021/11/10/HFMABTQS23h5Wtz.png" alt="image-20211108002715659" /></p>
+  </li>
+  <li>
+    <p>如果以后不想再连接这个仓库，只需输入 git remote remove + name</p>
+  </li>
+</ol>
+
+<h4 id="在github仓库中启用github-page">在github仓库中启用GitHub-page</h4>
+
+<p>在对应仓库的Setting中的Options中找到GitHub Pages点击启用</p>
+
+<p><img src="https://i.loli.net/2021/11/10/LYxD5sWqiOkC8UX.png" alt="image-20211110141213723" /></p>
+
+<p>安装了jekyll-remote-theme插件就可以使用自己的主题了。</p>
+
+<p>最后在本地git push到远程仓库中便可以同步更新到自己的GitHub pages上，以网页的形式展现md文档。</p>
+
+<p><img src="https://i.loli.net/2021/11/10/GZaVCJxReUNwntE.png" alt="image-20211110000822668" /></p>
+
+<h2 id="jekyll的使用">jekyll的使用</h2>
+
+<p><img src="https://i.loli.net/2021/11/10/9SyKZzjEL2UQwDC.png" alt="image-20211110142143855" /></p>
+
+<p>其中笔记需要以yyyy-mm-dd-name.md格式来写，且需要写类似如下头标题：</p>
+
+<p><img src="https://i.loli.net/2021/11/10/qWFLcvjC3gsZKt2.png" alt="image-20211110161714195" /></p>
+
+<h3 id="一些注意点">一些注意点</h3>
+
+<ol>
+  <li>
+    <p>使用bundle install命令需要目录中存在gemfile文件用于提供配置。</p>
+  </li>
+  <li>
+    <p>进行步骤5时，可能遇到如下报错</p>
+
+    <p><img src="https://i.loli.net/2021/11/10/wjpW47aHMUEfoct.png" alt="image-20211109235616495" /></p>
+
+    <p>这是因为Ruby3.0以上不会再自带WebRick，需要手动添加到环境里，执行 bundle add webrick即可，另再执行gem install github-pages, 安装完毕后会出现这个界面：</p>
+
+    <p><img src="https://i.loli.net/2021/11/10/rZgUiHhRWIJ61fc.png" alt="image-20211110000420691" /></p>
+
+    <p>看到这个我突然感觉可能要成了！困扰了我一个晚上的各种bug貌似要被解决了！新的希望！</p>
+
+    <p><img src="https://i.loli.net/2021/11/10/gVkLx8IvpOGamuz.png" alt="image-20211110000658587" /></p>
+
+    <p>成了！</p>
+
+    <p><img src="https://i.loli.net/2021/11/10/GZaVCJxReUNwntE.png" alt="image-20211110000822668" /></p>
+
+    <p>现在就可以开始配置各种样式了！Duang！Nice！</p>
+  </li>
+  <li>
+    <p>现在可以选择需要的样式了，<a href="jekyllthemes.org">轻戳这里到官网选择</a>，最后根据你选择的样式，到其官网查超越需要安装的gem插件和各种配置来完善</p>
+  </li>
+  <li>
+    <p>md文档推送到github时，文件路径需要用斜杠而不是反斜杠。</p>
+  </li>
+  <li>
+    <p>一个大坑，jekyll页面中要用markdown展示图片，有几个方式: github相对路径；使用第三方网上存储。但是为了写笔记方便，不可能一张一张图片添加url，这里经过一天地摸索，终于找到使用PicGo作为中介上传到SM.MS免费服务器中<strong>(GitHub的连接中图片也不能显示，而其他三方大都需要购买服务器)</strong> ，从而在Typora添加图片时可以自动上传图片并将图片链接表明为url连接，从而可以达到正常显示的目的。</p>
+  </li>
+</ol>
+
+<h2 id="reference">Reference：</h2>
+
+<ul>
+  <li>
+    <p>[1] <a href="https://xjtu-blacksmith.cn/notes/install-jekyll-on-windows">在 Windows 系统上安装 Jekyll</a></p>
+  </li>
+  <li>
+    <p>[2] <a href="https://blog.csdn.net/qq_36667170/article/details/79094257">GitHub教程 SSH keys配置</a></p>
+  </li>
+  <li>
+    <p>[3] <a href="https://blog.csdn.net/qq_36667170/article/details/79085301">GitHub教程 Git Bash详细教程</a></p>
+  </li>
+  <li>
+    <p>[4] <a href="https://xjtu-blacksmith.cn/essay/jekyll-of-pages">GitHub Pages 与 Gitee Pages 上的 Jekyll</a></p>
+  </li>
+  <li>
+    <p>[5] <a href="https://blog.csdn.net/u012675539/article/details/43734055">Jekyll 安装、使用方法与卸载</a></p>
+  </li>
+  <li>
+    <p>[6] <a href="http://cenalulu.github.io/jekyll/choose-a-template-for-your-blog/">Jekyll&amp;Github Pages博客模板挑选和配置</a></p>
+  </li>
+</ul>
+
+:ET

@@ -1,7 +1,7 @@
 ---
 title: Windows环境下jekyll配置
 date: 2021-11-10 15:47:18
-description: 
+description: none
 comments: true
 categories:
 - env-set
@@ -106,6 +106,8 @@ tags:
 3. 现在可以选择需要的样式了，[轻戳这里到官网选择](jekyllthemes.org)，最后根据你选择的样式，到其官网查超越需要安装的gem插件和各种配置来完善
 
 4. md文档推送到github时，文件路径需要用斜杠而不是反斜杠。
+
+4. 一个大坑，jekyll页面中要用markdown展示图片，有几个方式: github相对路径；使用第三方网上存储。但是为了写笔记方便，不可能一张一张图片添加url，这里经过一天地摸索，终于找到使用PicGo作为中介上传到SM.MS免费服务器中**(GitHub的连接中图片也不能显示，而其他三方大都需要购买服务器)** ，从而在Typora添加图片时可以自动上传图片并将图片链接表明为url连接，从而可以达到正常显示的目的。
 
 
 
