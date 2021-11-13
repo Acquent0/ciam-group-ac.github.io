@@ -168,16 +168,8 @@ And of course, we have:$V_{\pi_{*}}(s)=V_{*}(s) \text { and } Q_{\pi_{*}}(s, a)=
 
 ## Reference
 
-[1] [强化学习-Reinforcement learning | RL](https://easyai.tech/ai-definition/reinforcement-learning/)
+[1] [强化学习-Reinforcement learning RL](https://easyai.tech/ai-definition/reinforcement-learning/)
 
 [2] [三分钟看懂强化学习系列05--贝尔曼方程](https://zhuanlan.zhihu.com/p/139559442)
 
 [3] [A (Long) Peek into Reinforcement Learning](https://lilianweng.github.io/lil-log/2018/02/19/a-long-peek-into-reinforcement-learning.html)
-
-[1] [强化学习-Reinforcement learning | RL](https://easyai.tech/ai-definition/reinforcement-learning/)
-
-[1] [强化学习-Reinforcement learning | RL](https://easyai.tech/ai-definition/reinforcement-learning/)
-
-[1] [强化学习-Reinforcement learning | RL](https://easyai.tech/ai-definition/reinforcement-learning/)
-
-[1] [强化学习-Reinforcement learning | RL](https://easyai.tech/ai-definition/reinforcement-learning/)
