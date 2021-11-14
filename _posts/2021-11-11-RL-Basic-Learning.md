@@ -3,6 +3,7 @@ title: RL Basic Learning
 date: 2021-11-11 19:47
 description: to chase that brilliant
 comments: true
+mathjax: true
 categories:
 - learning-notes
 tags:
