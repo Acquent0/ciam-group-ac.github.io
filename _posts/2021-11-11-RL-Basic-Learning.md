@@ -93,7 +93,7 @@ $$
 As the behavior function $\pi$, it tells which action to take in state s. It is a mapping from state s to action a and can be either deterministic or stochastic:
 
 - Deterministic: $π(s)=aπ(s)=a.$
-- Stochastic: $π(a|s)=\mathbb{P_\pi}[A=a|S=s]$
+- Stochastic: $π(a\mid s)=\mathbb{P_\pi}[A=a\mid S=s]$
 
 ##### Value function
 
@@ -139,8 +139,10 @@ $$
 \pi_{*}=\arg \max _{\pi} V_{\pi}(s), \pi_{*}=\arg \max _{\pi} Q_{\pi}(s, a)
 $$
 
-
-And of course, we have:$V_{\pi_{*}}(s)=V_{*}(s) \text { and } Q_{\pi_{*}}(s, a)=Q_{*}(s, a)$
+And of course, we have:
+$$
+V_{\pi_{*}}(s)=V_{*}(s) \text { and } Q_{\pi_{*}}(s, a)=Q_{*}(s, a)
+$$
 
 ### Markov Decision Processes
 
